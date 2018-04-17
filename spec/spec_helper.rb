@@ -1,4 +1,13 @@
 require "bundler/setup"
+require 'simplecov'
+require 'simplecov-rcov'
+SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+SimpleCov.start
+
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+require 'dotenv'
+Dotenv.load
+
 require "fixer_io"
 
 RSpec.configure do |config|

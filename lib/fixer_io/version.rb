@@ -1,3 +1,4 @@
 module FixerIo
-  VERSION = "0.0.1"
+  # Current version.
+  VERSION = '0.0.1'.freeze
 end
