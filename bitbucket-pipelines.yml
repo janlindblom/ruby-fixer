@@ -17,8 +17,6 @@ pipelines:
         script:
           - bundle install --path ./vendor
           - bundle exec rake yard
-          - bundle exec rake rubocop
-          - bundle exec rake spec
     - step:
         name: Rubocop
         caches:

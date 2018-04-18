@@ -11,7 +11,7 @@ RuboCop::RakeTask.new(:rubocop) do |task|
   # only show the files with failures
   # task.formatters = ['worst']
   # don't abort rake on failure
-  task.fail_on_error = true
+  task.fail_on_error = false
 end
 
 YARD::Rake::YardocTask.new do |t|
