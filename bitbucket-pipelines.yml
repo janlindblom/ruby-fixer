@@ -22,7 +22,6 @@ pipelines:
         caches:
           - bundler
         script:
-          - ruby --version
           - bundle install --path ./vendor
           - bundle exec rake rubocop
     - step:
@@ -33,6 +32,57 @@ pipelines:
         script:
           - bundle install --path ./vendor
           - bundle exec rake spec
+    - step:
+        name: Deploy to stage
+        deployment: stage
+        caches:
+          - bundler
+        script:
+          - bundle install --path ./vendor
+          - bundle exec rake build
+          - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"pkg/*.gem"
+  branches:
+    master:
+      - step:
+          name: Build package
+          caches:
+            - bundler
+          script:
+            - ruby --version
+            - bundle install --path ./vendor
+            - bundle exec rake build
+      - step:
+          name: Generate documentation
+          caches:
+            - bundler
+          script:
+            - bundle install --path ./vendor
+            - bundle exec rake yard
+      - step:
+          name: Rubocop
+          caches:
+            - bundler
+          script:
+            - ruby --version
+            - bundle install --path ./vendor
+            - bundle exec rake rubocop
+      - step:
+          name: Run tests
+          deployment: test
+          caches:
+            - bundler
+          script:
+            - bundle install --path ./vendor
+            - bundle exec rake spec
+      - step:
+          name: Deploy to production
+          deployment: production
+          caches:
+            - bundler
+          script:
+            - bundle install --path ./vendor
+            - bundle exec rake build
+            - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"pkg/*.gem"
 
 definitions:
   caches:
