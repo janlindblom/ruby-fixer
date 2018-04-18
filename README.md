@@ -2,6 +2,8 @@
 
 ![Amazon CodeBuild](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiUDl6UGFwN3A5dUZmdE5PTkJsNk5KQ0V6UXlCT2ZaWkJxMld0enBCVC92dGxEOC9iM1F2cEtNVW5ua0JaTGl0N0VobjNsbGI2WEZ3eEJaOFduV3BUSkdRPSIsIml2UGFyYW1ldGVyU3BlYyI6IkdhQXplZytUYWx6U0lrQkciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 [![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/janlindblom/ruby-fixer.png)](https://bitbucket.org/janlindblom/ruby-fixer/addon/pipelines/home)
+[![Gem](https://img.shields.io/gem/v/fixer_io.png)](https://rubygems.org/gems/fixer_io)
+[![Documentation](https://img.shields.io/badge/docs-rdoc.info-yellow.png)](http://www.rubydoc.info/gems/fixer_io/frames)
 
 Interface to the fixer.io API. See [fixer.io](https://fixer.io/) for details on
 getting an API key.
