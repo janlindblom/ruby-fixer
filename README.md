@@ -1,5 +1,6 @@
 # FixerIo
 
+![Amazon CodeBuild](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiUDl6UGFwN3A5dUZmdE5PTkJsNk5KQ0V6UXlCT2ZaWkJxMld0enBCVC92dGxEOC9iM1F2cEtNVW5ua0JaTGl0N0VobjNsbGI2WEZ3eEJaOFduV3BUSkdRPSIsIml2UGFyYW1ldGVyU3BlYyI6IkdhQXplZytUYWx6U0lrQkciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 [![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/janlindblom/ruby-fixer.png)](https://bitbucket.org/janlindblom/ruby-fixer/addon/pipelines/home)
 
 Interface to the fixer.io API. See [fixer.io](https://fixer.io/) for details on getting an API key.
