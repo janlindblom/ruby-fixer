@@ -9,10 +9,10 @@ phases:
       - bundle install
   build:
     commands:
-      - bundle exec rake build
       - bundle exec rake yard
       - bundle exec rake rubocop
       - bundle exec rake spec
+      - bundle exec rake build
 
 artifacts:
   files:

@@ -7,14 +7,14 @@ pipelines:
         caches:
           - bundler
         script:
-          - bundle install --path ./vendor
+          - bundle install --path ./vendor --without deployment
           - bundle exec rake yard
     - step:
         name: Rubocop
         caches:
           - bundler
         script:
-          - bundle install --path ./vendor
+          - bundle install --path ./vendor --without deployment
           - bundle exec rake rubocop
     - step:
         name: Run tests
@@ -22,7 +22,7 @@ pipelines:
         caches:
           - bundler
         script:
-          - bundle install --path ./vendor
+          - bundle install --path ./vendor --without deployment
           - bundle exec rake spec
     - step:
         name: Deploy to stage
@@ -40,7 +40,7 @@ pipelines:
           caches:
             - bundler
           script:
-            - bundle install --path ./vendor
+            - bundle install --path ./vendor --without deployment
             - bundle exec rake yard
       - step:
           name: Rubocop
@@ -48,7 +48,7 @@ pipelines:
             - bundler
           script:
             - ruby --version
-            - bundle install --path ./vendor
+            - bundle install --path ./vendor --without deployment
             - bundle exec rake rubocop
       - step:
           name: Run tests
@@ -56,7 +56,7 @@ pipelines:
           caches:
             - bundler
           script:
-            - bundle install --path ./vendor
+            - bundle install --path ./vendor --without deployment
             - bundle exec rake spec
       - step:
           name: Deploy to production
