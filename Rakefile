@@ -1,22 +1,22 @@
-require "bundler/gem_tasks"
-require "rspec/core/rake_task"
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
-require "yard"
-require "yard/rake/yardoc_task"
+require 'yard'
+require 'yard/rake/yardoc_task'
 
 RSpec::Core::RakeTask.new(:spec)
 
 RuboCop::RakeTask.new(:rubocop) do |task|
   task.patterns = ['lib/**/*.rb']
   # only show the files with failures
-  #task.formatters = ['worst']
+  # task.formatters = ['worst']
   # don't abort rake on failure
-  task.fail_on_error = false
+  task.fail_on_error = true
 end
 
 YARD::Rake::YardocTask.new do |t|
-  t.files   = ['lib/**/*.rb']
+  t.files = ['lib/**/*.rb']
   t.stats_options = ['--list-undoc']
 end
 
-task :default => :spec
+task default: :spec
