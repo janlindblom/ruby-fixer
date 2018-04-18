@@ -34,7 +34,7 @@ pipelines:
           - bundle exec rake spec
     - step:
         name: Deploy to stage
-        deployment: stage
+        deployment: staging
         caches:
           - bundler
         script:
