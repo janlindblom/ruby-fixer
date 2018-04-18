@@ -3,28 +3,17 @@ image: ruby:2.4
 pipelines:
   default:
     - step:
-        name: Build package
-        caches:
-          - bundler
-        script:
-          - ruby --version
-          - bundle install --path ./vendor
-          - bundle exec rake build
-    - step:
         name: Generate documentation
         caches:
           - bundler
         script:
           - bundle install --path ./vendor
           - bundle exec rake yard
-          - bundle exec rake rubocop
-          - bundle exec rake spec
     - step:
         name: Rubocop
         caches:
           - bundler
         script:
-          - ruby --version
           - bundle install --path ./vendor
           - bundle exec rake rubocop
     - step:
@@ -35,6 +24,49 @@ pipelines:
         script:
           - bundle install --path ./vendor
           - bundle exec rake spec
+    - step:
+        name: Deploy to stage
+        deployment: staging
+        caches:
+          - bundler
+        script:
+          - bundle install --path ./vendor
+          - bundle exec rake build
+          - bundle exec rake deploy
+  branches:
+    master:
+      - step:
+          name: Generate documentation
+          caches:
+            - bundler
+          script:
+            - bundle install --path ./vendor
+            - bundle exec rake yard
+      - step:
+          name: Rubocop
+          caches:
+            - bundler
+          script:
+            - ruby --version
+            - bundle install --path ./vendor
+            - bundle exec rake rubocop
+      - step:
+          name: Run tests
+          deployment: test
+          caches:
+            - bundler
+          script:
+            - bundle install --path ./vendor
+            - bundle exec rake spec
+      - step:
+          name: Deploy to production
+          deployment: production
+          caches:
+            - bundler
+          script:
+            - bundle install --path ./vendor
+            - bundle exec rake build
+            - bundle exec rake deploy
 
 definitions:
   caches:

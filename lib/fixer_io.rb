@@ -57,18 +57,14 @@ module FixerIo
     end
 
     def raise_errors(error_type, error_info)
-      case error_type
-      when 'missing_access_key'
-        raise MissingApiKeyError, error_info
-      when 'base_currency_access_restricted'
+      raise MissingApiKeyError, error_info if error_type == 'missing_access_key'
+      if error_type == 'base_currency_access_restricted'
         raise BaseCurrencyAccessRestrictedError,
               'Base currency access is restricted for this API key.'
-      when 'invalid_access_key'
-        raise InvalidApiKeyError, error_info
-      else
-        message = error_info ? error_info : 'Unknown error'
-        raise StandardError, "#{error_type}: #{message}"
       end
+      raise InvalidApiKeyError, error_info if error_type == 'invalid_access_key'
+      raise StandardError,
+            "#{error_type}: #{error_info ? error_info : 'Unknown error'}"
     end
   end
 
