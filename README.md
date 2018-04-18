@@ -1,5 +1,7 @@
 # FixerIo
 
+[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/janlindblom/ruby-fixer.png)](https://bitbucket.org/janlindblom/ruby-fixer/addon/pipelines/home)
+
 Interface to the fixer.io API. See [fixer.io](https://fixer.io/) for details on getting an API key.
 
 ## Installation
