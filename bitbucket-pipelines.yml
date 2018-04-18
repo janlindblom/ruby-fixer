@@ -29,6 +29,7 @@ pipelines:
           - bundle exec rake rubocop
     - step:
         name: Run tests
+        deployment: test
         caches:
           - bundler
         script:
