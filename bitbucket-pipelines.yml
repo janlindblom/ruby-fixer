@@ -40,7 +40,7 @@ pipelines:
         script:
           - bundle install --path ./vendor
           - bundle exec rake build
-          - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"pkg/*.gem"
+          - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"./pkg/*.gem"
   branches:
     master:
       - step:
@@ -82,7 +82,7 @@ pipelines:
           script:
             - bundle install --path ./vendor
             - bundle exec rake build
-            - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"pkg/*.gem"
+            - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"./pkg/*.gem"
 
 definitions:
   caches:
